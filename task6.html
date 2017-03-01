@@ -1,0 +1,109 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+  <style type="text/css">
+  .list { margin-top: 50px;}
+    .list a{ display: inline-block; text-align: center; color: #fff; line-height: 40px; height: 40px; padding: 0 20px; margin: 0 5px; background: #5CA7BA;}
+    .red{color: #F00 !important;}
+  </style>
+<body>
+
+
+<div>
+  
+  <textarea rows="5" cols="60" id="num" /></textarea>
+  <input type="text" id="searchc">
+  <button id="searchbutton">查询</button>
+   <button id="button1">左侧入</button>
+   <button id="button2">右侧入</button> 
+   <button id="button3">左侧出</button>
+   <button id="button4">右侧出</button>
+  <div class="list" id="list"><a>1</a><a>2</a><a>3</a><a>4</a></div>
+</div>
+<script type="text/javascript">
+  var a=document.getElementById("list");
+  var byn=document.getElementById("num");
+  var button1=document.getElementById("button1");
+  var button2=document.getElementById("button2");
+  var button3=document.getElementById("button3");
+  var button4=document.getElementById("button4");
+  var searchbutton=document.getElementById("searchbutton");
+  var searchc=document.getElementById("searchc");
+  var text=a.getElementsByTagName("a");
+   
+  button1.onclick=function(){
+    var texts=a.innerHTML;
+    var add=num.value;
+    var b=add.split(/[,|\s|、|，|\n|  ]/g);
+    for(var i in b){
+     texts=texts+"<a>"+b[i]+"</a>"
+    }
+     a.innerHTML=texts;
+  }
+  button2.onclick=function(){
+    var texts=a.innerHTML;
+    var add=num.value;
+    var b=add.split(/[,|\s|、|，|\n|  ]/g);
+    for(var i in b){
+     texts="<a>"+b[i]+"</a>"+texts
+    }
+     a.innerHTML=texts;
+  }
+  button3.onclick=function(){
+    var list="";
+    for(i=1;i<text.length;i++){
+      list += text[i].outerHTML;
+    }
+     a.innerHTML=list;
+  }
+    button4.onclick=function(){
+      var list="";
+    for(i=0;i<text.length-1;i++){
+      list += text[i].outerHTML;
+    }
+     a.innerHTML=list;
+  }
+  function buttonclick(e){
+    console.log(e.target);
+     var texts=a.innerHTML;
+    console.log(text);
+    var Data={};
+    for(i=0;i<text.length;i++){
+
+    }
+
+    console.log( texts.indexOf(e.target));
+
+  }
+  a.addEventListener("click",buttonclick)
+
+a.onmouseover=function(){
+  for(var k in text){
+  text[k].index=k;
+  text[k].onclick = function () {
+    console.log(a.childNodes[this.index],this.index);
+          a.removeChild(a.childNodes[this.index]);
+        }
+  }
+}
+searchbutton.onclick=function(){
+  var b=a.getElementsByTagName("a");
+  var c=searchc.value;
+ 
+  for(var i=0;i<b.length;i++){
+    console.log(b[i].innerHTML.indexOf(c));
+    if(b[i].innerHTML.indexOf(c)!=-1&&c!=""){
+      b[i].className="red";
+    }else{
+      b[i].className = b[i].className.replace('red', '');
+    }
+    
+  }
+}
+
+</script>
+</body>
+</html>

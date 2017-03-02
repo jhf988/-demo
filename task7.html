@@ -7,13 +7,7 @@
   <style type="text/css">
   .list { margin-top: 50px;}
     .list a{ display: inline-block; text-align: center; color: #fff; line-height: 40px; height: 40px; padding: 0 20px; margin: 0 5px; background: #5CA7BA;}
-    .red{color: #F00 !important;}
-    #box{ }
     div{border:1px solid #111;display: flex; padding: 10px; background: #fff;margin-right: 5px;}
-    .red{background: #f00}
-    .blue{background: #0f0}
-    .green{background: #00f}
-    .yellow{background: #0ff}
   </style>
 <body>
   <div id="box">
@@ -68,21 +62,30 @@
 <button id="hxbl">后序遍历</button>
 <script type="text/javascript">
   var a=document.getElementById("box");
-      b=document.getElementById("qxbl");
-
-      d=a.children;
       e=a.getElementsByTagName("div");
+      b=document.getElementById("qxbl");
       f=document.getElementById("zxbl");
       g=document.getElementById("hxbl");
-      red="red";
-  
+
  b.onclick=function(){
+  for(var i=0;i<e.length;i++){
+    console.log(i);
+    e[i].style.background="#fff";
+  }
  preOrder(tree);
  }
 f.onclick=function(){
+   for(var i=0;i<e.length;i++){
+    console.log(i);
+    e[i].style.background="#fff";
+  }
  inOrder(tree);
  }
  g.onclick=function(){
+   for(var i=0;i<e.length;i++){
+    console.log(i);
+    e[i].style.background="#fff";
+  }
  postOrder(tree);
  }
 

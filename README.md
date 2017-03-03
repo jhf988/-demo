@@ -1,1 +1,10 @@
 # baidu-demo
+<a href="1.html">1</a>
+<a href="2.html">2</a>
+<a href="3.html">3</a>
+<a href="4.html">4</a>
+<a href="5.html">5</a>
+<a href="6.html">6</a>
+<a href="7.html">7</a>
+<a href="task6.html">task6</a>
+<a href="task7.html">task7</a>

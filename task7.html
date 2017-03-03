@@ -66,173 +66,67 @@
       b=document.getElementById("qxbl");
       f=document.getElementById("zxbl");
       g=document.getElementById("hxbl");
+      tree=[];
 
  b.onclick=function(){
-  for(var i=0;i<e.length;i++){
-    console.log(i);
-    e[i].style.background="#fff";
-  }
- preOrder(tree);
+start();
+ preOrder(a);
+ show();
  }
 f.onclick=function(){
-   for(var i=0;i<e.length;i++){
-    console.log(i);
-    e[i].style.background="#fff";
-  }
- inOrder(tree);
+  start();
+ inOrder(a);
+ show();
  }
  g.onclick=function(){
-   for(var i=0;i<e.length;i++){
-    console.log(i);
-    e[i].style.background="#fff";
-  }
- postOrder(tree);
+start();
+ postOrder(a);
+ show();
  }
 
+function start(){
+  tree=[];
 
-
-var tree = {
- value: a,
- left: {
-  value: a.children[0],
-  left: {
-   value: a.children[0].children[0],
-    left: {
-     value: a.children[0].children[0].children[0],
-     left: {
-       value: a.children[0].children[0].children[0].children[0]
-      },
-      right:{
-        value: a.children[0].children[0].children[0].children[1]
-      }
-    },
-    right:{
-      value: a.children[0].children[0].children[1],
-      left: {
-       value: a.children[0].children[0].children[1].children[0]
-      },
-      right:{
-        value: a.children[0].children[0].children[1].children[1]
-      }
-    }
-  },
-  right:{
-    value: a.children[0].children[1],
-    left: {
-     value: a.children[0].children[1].children[0],
-     left: {
-       value: a.children[0].children[1].children[0].children[0]
-      },
-      right:{
-        value: a.children[0].children[1].children[0].children[1]
-      }
-    },
-    right:{
-      value: a.children[0].children[1].children[1],
-      left: {
-       value: a.children[0].children[1].children[1].children[0]
-      },
-      right:{
-        value: a.children[0].children[1].children[1].children[1]
-      }
-    }
-  }
- },
- right: {
-  value: a.children[1],
-  left: {
-   value: a.children[1].children[0],
-   left: {
-    value: a.children[1].children[0].children[0],
-    left: {
-       value: a.children[1].children[0].children[0].children[0]
-      },
-      right:{
-        value: a.children[1].children[0].children[0].children[1]
-      }
-   },
-   right: {
-    value: a.children[1].children[0].children[1],
-    left: {
-       value: a.children[1].children[0].children[1].children[0]
-      },
-      right:{
-        value: a.children[1].children[0].children[1].children[1]
-      }
-   }
-  },
-  right: {
-   value: a.children[1].children[1],
-   left: {
-    value: a.children[1].children[1].children[0],
-    left: {
-       value: a.children[1].children[1].children[0].children[0]
-      },
-      right:{
-        value: a.children[1].children[1].children[0].children[1]
-      }
-   },
-   right: {
-    value: a.children[1].children[1].children[1],
-    left: {
-       value: a.children[1].children[1].children[1].children[0]
-      },
-      right:{
-        value: a.children[1].children[1].children[1].children[1]
-      }
-   }
-  }
- }
 }
-
+function show(){
+  let i=0;
+  tree[i].style.background="#f00";
+  var change;
+  change=setInterval(function(){
+    i++;
+    if(i<tree.length){
+            tree[i-1].style.background="#fff";
+            tree[i].style.background="red";
+          }else{
+            clearInterval(change);
+            tree[i-1].style.background="#fff";
+          }
+  },300);
+}
 
 var preOrder = function (node) { 
  if (node) {  
-  var num=Math.random()*999999;
-  var color="#"+parseInt(num);
-console.log(node,color);
-  node.value.style.background=color;
-  node.value.parentNode.style.background="#fff";
-  setTimeout(function(){
-  preOrder(node.left);
-  },1000)
-  setTimeout(function(){
-  preOrder(node.right);
-  },3000)
+  tree.push(node);
+  console.log(tree);
+   preOrder(node.firstElementChild);
+   preOrder(node.lastElementChild);
 
  }
 }
 var inOrder = function (node) { 
  if (node) { 
-  var num=Math.random()*999999;
-  var color="#"+parseInt(num);
-setTimeout(function(){
-  inOrder(node.left);
-  },1000)
-setTimeout(function(){
- node.value.style.background=color;
-node.value.parentNode.style.background="#fff";
-  },1000)
-setTimeout(function(){
-  inOrder(node.right);
-  },3000)
-  
+ 
+   inOrder(node.firstElementChild);
+   tree.push(node);
+   inOrder(node.lastElementChild);
  }
 }
 var postOrder = function (node) { 
  if (node) {
-var num=Math.random()*999999;
-  var color="#"+parseInt(num);
-  setTimeout(function(){
-  postOrder(node.left);
-  },3000)
-setTimeout(function(){
- node.value.style.background=color;
-node.value.parentNode.style.background="#fff";
-  },1000)
-setTimeout(function(){
-  postOrder(node.right);
-  },1000)
+    
+   postOrder(node.firstElementChild);
+   postOrder(node.lastElementChild);
+   tree.push(node);
  }
 }
 

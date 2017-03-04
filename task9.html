@@ -1,0 +1,176 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+  <style type="text/css">
+  .list { margin-top: 50px;}
+    .list a{ display: inline-block; text-align: center; color: #fff; line-height: 40px; height: 40px; padding: 0 20px; margin: 0 5px; background: #5CA7BA;}
+    div{border:1px solid #111;display: flex; padding: 10px; background: #fff;margin-right: 5px;}
+    .green{background: #0f0;}
+  </style>
+<body>
+
+
+<div id="box">super
+  <div>car
+    <div>Apple
+      <div>pear</div>
+      <div>pig</div>
+      <div>cola</div>
+      <div>soccer</div>
+    </div>
+    <div>phone</div>
+    <div>
+      <div>book</div>
+      <div>school</div>
+    </div>
+  </div>
+  <div>Note
+    <div>Human
+      <div>code</div>
+      <div>operate</div>
+      <div>Man</div>
+    </div>
+    <div>program
+      <div>
+        <div>bement
+          <div>cot</div>
+        </div>
+        <div>glass</div>
+      </div>
+    </div>
+  </div>
+  <div>fish</div>
+</div>
+
+<button id="qxbl">遍历</button>
+<button id="del">删除</button>
+
+<input id="findcontent" type="text">
+<button id="find">查询</button>
+<input id="addcontent" type="text">
+<button id="addbutton">添加</button>
+<script type="text/javascript">
+  var a=document.getElementById("box");
+      b=document.getElementById("qxbl");
+      c=document.getElementById("find");
+      d=document.getElementById("findcontent");
+      e=a.getElementsByTagName("div");
+      f=document.getElementById("del");
+      g=document.getElementById("addbutton");
+      h=document.getElementById("addcontent");
+      tree=[];
+
+ b.onclick=function(){
+  start();
+ preOrder(a);
+ clickchangecolor();
+ console.log(tree);
+ }
+f.onclick=function(){
+ start();
+ preOrder(a);
+ delvalue();
+ }
+
+c.onclick=function(){
+  start();
+  preOrder(a);
+  findvalue();
+}
+g.onclick=function(){
+  start();
+  preOrder(a);
+  addvalue();
+}
+
+function start(){
+  tree=[];
+
+}
+
+var preOrder = function (node) { 
+ if (node) {  
+  tree.push(node);
+    for(var i=0; i<node.children.length;i++){
+      preOrder(node.children[i]);
+    }
+ }
+}
+
+function show(){
+  let i=0;
+  tree[i].style.background="#f00";
+  var change;
+  change=setInterval(function(){
+    i++;
+    if(i<tree.length){
+            tree[i-1].style.background="#fff";
+            tree[i].style.background="red";
+          }else{
+            clearInterval(change);
+            tree[i-1].style.background="#fff";
+          }
+  },300);
+}
+
+function findvalue(){
+   let i=0;
+  tree[i].style.background="#f00";
+  var change;
+  change=setInterval(function(){
+    i++;
+    if(i<tree.length){
+       
+             if(d.value==tree[i-1].childNodes[0].textContent.replace(/[\r\n\s]/g,"")){
+              console.log('reight');
+              tree[i-1].style.background="red";
+              tree[i].style.background="red";
+            }else{
+              tree[i-1].style.background="#fff";
+              tree[i].style.background="red";
+            }
+          }else{
+              clearInterval(change);
+              tree[i-1].style.background="#fff";
+          }
+  },300);
+}
+
+function clickchangecolor(){
+  for(var i=0; i<tree.length;i++){
+  tree[i].addEventListener("click", function(){
+      for(var i in tree){
+        if(event.target===tree[i]){
+           tree[i].style.background="#0f0";
+        }else{
+           tree[i].style.background="#fff";
+        }
+      }
+});
+ }
+}
+
+function delvalue(){
+  for(var i in tree){
+        if(tree[i].style.background=="rgb(0, 255, 0)"){
+         tree[i].parentNode.removeChild(tree[i]);
+        }
+      }
+}
+
+
+function addvalue(){
+  for(var i in tree){
+        if(tree[i].style.background=="rgb(0, 255, 0)"){
+          var con=document.createElement("div"); 
+           con.innerHTML=h.value;
+         tree[i].appendChild(con);
+        }
+      }
+}
+</script>
+</body>
+</html>

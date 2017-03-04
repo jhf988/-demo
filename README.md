@@ -1,11 +1,12 @@
 # baidu-demo
-<a href="https://jhf988.github.io/baidu-demo/1.html">1</a>
-<a href="https://jhf988.github.io/baidu-demo/2.html">2</a>
-<a href="https://jhf988.github.io/baidu-demo/3.html">3</a>
+
 <a href="https://jhf988.github.io/baidu-demo/4.html">4</a>
 <a href="https://jhf988.github.io/baidu-demo/5.html">5</a>
-<a href="https://jhf988.github.io/baidu-demo/6.html">6</a>
 <a href="https://jhf988.github.io/baidu-demo/7.html">7</a>
+<a href="https://jhf988.github.io/baidu-demo/task1.html">task1</a>
+<a href="https://jhf988.github.io/baidu-demo/task2.html">task2</a>
+<a href="https://jhf988.github.io/baidu-demo/task3.html">task3</a>
+<a href="https://jhf988.github.io/baidu-demo/task6.html">task4</a>
 <a href="https://jhf988.github.io/baidu-demo/task6.html">task6</a>
 <a href="https://jhf988.github.io/baidu-demo/task7.html">task7</a>
 <a href="https://jhf988.github.io/baidu-demo/task8.html">task8</a>

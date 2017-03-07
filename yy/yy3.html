@@ -36,7 +36,6 @@
 </select>
 </div>
 <br/>
-<input type="radio" checked="checked" onclick="jobhide()" value="在校生" name="job">在校生<input type="radio" value="非在校生" onclick="jobhide()" name="job">非在校生
 <div id="job">
     <h2>就业单位</h2>
     <input type="text">
@@ -70,21 +69,15 @@
          b=document.getElementById("school");
          c=document.getElementsByName("school");
          d=document.getElementsByClassName("school");
-         e=document.getElementsByName("job");
          f=document.getElementById("job");
          
 function hide(){
     if(event.target.value=="在校生"){
         d[0].style.display="block";
+      f.style.display="none";
       }else{
         d[0].style.display="none";
-      }
-}
-function jobhide(){
-  if(event.target.value=="非在校生"){
-        f.style.display="block";
-      }else{
-        f.style.display="none";
+         f.style.display="block";
       }
 }
   function change () {

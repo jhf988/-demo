@@ -1,0 +1,111 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style type="text/css">
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  .box { margin:100px 0 0 100px;}
+  .box h2{ margin: 20px 0;}
+  .box select{width: 200px; }
+  
+  </style>
+<body>
+  <div class="box">
+<input type="radio" checked="checked" onclick="hide()" value="在校生" name="school">在校生<input type="radio" value="非在校生" onclick="hide()" name="school">非在校生
+
+<div class="school">
+  <h2>学校</h2> 
+<select id="position" onChange="change()">
+  <option value="北京">北京</option>
+  <option value="上海">上海</option>
+  <option value="浙江">浙江</option>
+</select>
+<select name="" id="school">
+  <option value="北京大学">北京大学</option>
+  <option value="清华大学">清华大学</option>
+  <option value="北京师范大学">北京师范大学</option>
+</select>
+</div>
+<br/>
+<input type="radio" checked="checked" onclick="jobhide()" value="在校生" name="job">在校生<input type="radio" value="非在校生" onclick="jobhide()" name="job">非在校生
+<div id="job">
+    <h2>就业单位</h2>
+    <input type="text">
+</div>
+</div>
+<script type="text/javascript">     
+  var arr={
+    "bj": [{
+        "name": "北京大学",
+    }, {
+        "name": "清华大学",
+    }, {
+        "name": "北京师范大学",
+    }],
+    "sh": [{
+        "name": "交通大学",
+    }, {
+        "name": "上海大学",
+    }, {
+        "name": "上海财经大学",
+    }],
+    "zj": [{
+        "name": "浙江大学",
+    }, {
+        "name": "浙江理工大学",
+    }, {
+        "name": "浙江财经大学",
+    }],
+  }
+     var a=document.getElementById("position");
+         b=document.getElementById("school");
+         c=document.getElementsByName("school");
+         d=document.getElementsByClassName("school");
+         e=document.getElementsByName("job");
+         f=document.getElementById("job");
+         
+function hide(){
+    if(event.target.value=="在校生"){
+        d[0].style.display="block";
+      }else{
+        d[0].style.display="none";
+      }
+}
+function jobhide(){
+  if(event.target.value=="在校生"){
+        f.style.display="block";
+      }else{
+        f.style.display="none";
+      }
+}
+  function change () {
+    if(a.value=="北京"){
+      for(var i=0; i<b.options.length;i++){
+        b.options[i].innerHTML=arr.bj[i].name;
+        b.options[i].value=arr.bj[i].name;
+      }
+    }else if(a.value=="上海"){
+       for(var i=0; i<b.options.length;i++){
+        b.options[i].innerHTML=arr.sh[i].name;
+        b.options[i].value=arr.sh[i].name;
+      }
+    }else if(a.value=="浙江"){
+      for(var i=0; i<b.options.length;i++){
+         b.options[i].innerHTML=arr.zj[i].name;
+         b.options[i].value=arr.zj[i].name;
+      }
+    }
+  }
+
+</script>
+</body>
+</html>

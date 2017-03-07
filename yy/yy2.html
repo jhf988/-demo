@@ -1,0 +1,157 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style type="text/css">
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  .box { display: flex; margin:30px 0 0 0;}
+  .box .name{ color: #111; line-height: 30px; margin: 0 10px;font-size: 14px; width: 100px; text-align: center;}
+  .box .value input{ border: 1px solid #ccc; border-radius: 3px; height: 30px;width: 300px;}
+  .box .value p{color: #aaa; line-height: 20px; font-size: 12px;}
+  .submit{margin: 30px 0 30px 200px;}
+  .submit button{height: 30px; background: #2F79BA; border:0; border-radius: 3px; color: #fff; padding: 0 10px;}
+  </style>
+<body>
+<div class="box">
+  <div class="name">名称</div>
+  <div class="value" ><input id="namevalue" type="text" onfocus="alertvalue(this,'name')"  onblur="testvalue(this,'name')"><p></p></div>
+</div>
+<div class="box">
+  <div class="name">密码</div>
+  <div class="value" ><input id="passwordvalue" onfocus="alertvalue(this,'password')"  onblur="testvalue(this,'password')" type="password" ><p></p></div>
+</div>
+<div class="box">
+  <div class="name">密码确认</div>
+  <div class="value" ><input id="passwordsvalue" type="password" onfocus="alertvalue(this,'passwords')"  onblur="testpassword(this)"><p></p></div>
+</div>
+<div class="box">
+  <div class="name">邮箱</div>
+  <div class="value" ><input id="emailvalue" type="text" onfocus="alertvalue(this,'email')"  onblur="testvalue(this,'email')"><p></p></div>
+</div>
+<div class="box">
+  <div class="name">手机</div>
+  <div class="value" ><input id="phonevalue" type="text" onfocus="alertvalue(this,'phone')"  onblur="testvalue(this,'phone')"><p></p></div>
+</div>
+ <div class="submit" id="submit"><button>提交</button></div>
+<script type="text/javascript">     
+  var a=document.getElementById("namevalue");
+      b=document.getElementById("passwordvalue");
+      c=document.getElementById("passwordsvalue");
+      d=document.getElementById("emailvalue");
+      e=document.getElementById("phonevalue");
+      f=document.getElementById("submit");
+      arr={name:'',password:'',passwords:'',email:'',phone:''}
+      var testvalue=function(a,type){
+        var s=a.parentNode.getElementsByTagName("p");
+            content=a.value;
+            if(type=="name"){
+              var str=/^[\u4e00-\u9fa5]{2,8}$|^[A-Za-z0-9]{4,16}$|[^%&',;=?$\x22]{4,16}/;
+                  value1="姓名不能为空";
+                  value2="名称格式正确";
+                  value3="名称格式错误";
+            }else if(type=="password"){
+              var str= /^[A-Za-z0-9]{6,16}$/;
+                  value1="密码不能为空";
+                  value2="密码可用";
+                  value3="密码格式错误";
+            }else if(type=="email"){
+             var str= /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                  value1="邮箱不能为空";
+                  value2="邮箱格式正确";
+                  value3="邮箱格式错误";
+            }else if(type=="phone"){
+             var str= /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+                  value1="手机号码不能为空";
+                  value2="手机号码格式正确";
+                  value3="手机号码格式错误";
+            }
+            if(content==""){
+              a.style.borderColor="#DD0011";
+              s[0].innerHTML=value1;
+              s[0].style.color="#DD0011";
+              arr[type]=value1;
+            }else if(str.test(content)==true){
+              a.style.borderColor="#61BC45";
+               s[0].innerHTML=value2;
+              s[0].style.color="#61BC45";
+              arr[type]=value2;
+            }else{
+              a.style.borderColor="#DD0011";
+               s[0].innerHTML=value3;
+              s[0].style.color="#DD0011";
+              arr[type]=value3;
+            }
+      }
+      var alertvalue=function(a,type){
+        var s=a.parentNode.getElementsByTagName("p");
+        a.style.borderColor="#ccc";
+        s[0].style.color="#aaa";
+        if(type=="name"){
+          s[0].innerHTML="必填，长度为4~16个字符";
+        }else if(type=="password"){
+          s[0].innerHTML="必填，长度为6~16个数字与字母组合";
+        }else if(type=="email"){
+          s[0].innerHTML="必填，例：123@qq.com";
+        }else if(type=="phone"){
+          s[0].innerHTML="必填，长度为11位手机号";
+        }else if(type=="passwords"){
+          s[0].innerHTML="再次输入相同密码";
+        }
+      }
+      var testpassword=function(a){
+        var s=a.parentNode.getElementsByTagName("p");
+            str= /^[A-Za-z0-9]{6,16}$/;
+        if(a.value==b.value&&a.value!=""&&str.test(a.value)==true){
+          a.style.borderColor="#61BC45";
+          s[0].style.color="#61BC45"
+          s[0].innerHTML="两次输入一致";
+           arr.passwords="两次输入一致";
+        }else{
+           a.style.borderColor="#DD0011";
+          s[0].style.color="#DD0011"
+          s[0].innerHTML="两次输入不一致";
+          arr.passwords="两次输入不一致";
+        }
+      }
+      f.onclick=function(){
+        testvalue(a,'name');
+        testvalue(b,'password');
+        testpassword(c);
+        testvalue(d,'email');
+        testvalue(e,'phone');
+        var message='';
+        if(arr.name!="名称格式正确"){
+          message+=arr.name+"\n"
+        }
+        if(arr.password!="密码可用"){
+          message+=arr.password+"\n"
+        }
+        if(arr.passwords!="两次输入一致"){
+     
+          message+=arr.passwords+"\n"
+        }
+        if(arr.email!="邮箱格式正确"){
+           message+=arr.email+"\n"
+        }
+        if(arr.phone!="手机号码格式正确"){
+             message+=arr.phone+"\n"
+        }
+        if(message!=""){
+          alert(message);
+        }else{
+          alert("提交成功！");
+        }
+        
+      }
+</script>
+</body>
+</html>

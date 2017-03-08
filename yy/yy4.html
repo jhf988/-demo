@@ -1,0 +1,156 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style type="text/css">
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  li{ list-style: none;}
+  .box { margin:20px 0 0 20px;}
+  .box h2{ margin: 20px 0;}
+  .box select{width: 200px; }
+  
+  .xul{width: 200px;padding-left: 20px;height: 20px; text-align: center;}
+  .xul li{float: left; width: 20px; height: 20px;}
+  .yul{ height: 200px; width: 20px;float: left; }
+  .yul li{height: 20px; line-height: 20px;}
+
+  .boxs{ border:1px solid #333; width: 200px; height: 200px; margin-left: 20px;}
+  .boxs>ul li{border:1px solid #ccc;width: 20px; height: 20px;display: inline-block;box-sizing:border-box;}
+  .boxs>ul li.top{border-top:5px solid #00f; background: #f00;}
+  .boxs>ul li.right{border-right:5px solid #00f; background: #f00;}
+  .boxs>ul li.bottom{border-bottom:5px solid #00f; background: #f00;}
+  .boxs>ul li.left{border-left:5px solid #00f; background: #f00;}
+  </style>
+<body>
+ <div class="box">
+   <ul class="xul">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+    
+    <ul class="yul">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+    <div class="boxs">
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+
+    </div>
+ </div>
+ <br/>
+ <input type="text" id="searchvalue"><button id="searchbutton">执行</button>
+<script type="text/javascript">     
+  var box=document.getElementsByClassName("boxs");
+      a=document.getElementById("searchvalue");
+      b=document.getElementById("searchbutton");
+  console.log(box[0].children)
+  var list=box[0].children;
+      now="right";
+      x=0;
+      y=0;
+  list[x].children[y].className=now;
+  b.onclick=function() {
+    console.log(a.value);
+    if(a.value=="GO"){
+      console.log(x,y,now)
+      if(y>=0&&y<10&&x>=0&&x<10){
+        console.log(y,now)
+        if(now=="top"){
+          console.log(x,y);
+          list[x].children[y].className="";
+          if(x>0){
+            x--;
+          }
+          list[x].children[y].className=now;
+        }else if(now=="left"){
+          console.log(x,y);
+          list[x].children[y].className="";
+          if(y>0){
+          y--;
+          }
+          list[x].children[y].className=now;
+        }else if(now=="right"){
+          console.log(x,y);
+          list[x].children[y].className="";
+          if(y<9){
+            y++;
+          }
+          list[x].children[y].className=now;
+        }else if(now=="bottom"){
+          console.log(x,y);
+          list[x].children[y].className="";
+          if(x<9){
+            x++;
+          }
+          list[x].children[y].className=now;
+        }
+      }
+    }else if(a.value=="TUN LEF"){
+      switch (now)
+      {
+        case "top":now="left";break;
+        case "right":now="top";break;
+        case "bottom":now="right";break;
+        case "left":now="bottom";break;
+      }
+      list[x].children[y].className=now;
+      console.log(now);
+    }else if(a.value=="TUN RIG"){
+      switch (now)
+      {
+        case "top":now="right";break;
+        case "right":now="bottom";break;
+        case "bottom":now="left";break;
+        case "left":now="top";break;
+      }
+      list[x].children[y].className=now;
+      console.log(now);
+    }else if(a.value=="TUN BAC"){
+      switch (now)
+      {
+        case "top":now="bottom";break;
+        case "right":now="left";break;
+        case "bottom":now="top";break;
+        case "left":now="right";break;
+      }
+      list[x].children[y].className=now;
+      console.log(now);
+    }
+  }
+</script>
+</body>
+</html>

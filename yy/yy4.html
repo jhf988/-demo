@@ -15,9 +15,7 @@
   }
   li{ list-style: none;}
   .box { margin:20px 0 0 20px;}
-  .box h2{ margin: 20px 0;}
-  .box select{width: 200px; }
-  
+
   .xul{width: 200px;padding-left: 20px;height: 20px; text-align: center;}
   .xul li{float: left; width: 20px; height: 20px;}
   .yul{ height: 200px; width: 20px;float: left; }
@@ -73,21 +71,32 @@
  </div>
  <br/>
  <input type="text" id="searchvalue"><button id="searchbutton">执行</button>
+ <button onclick="go()">GO</button><button onclick="changeleft()">左转</button><button onclick="changeright()">右转</button><button onclick="changeBAC()">反转</button>
 <script type="text/javascript">     
   var box=document.getElementsByClassName("boxs");
       a=document.getElementById("searchvalue");
       b=document.getElementById("searchbutton");
-  console.log(box[0].children)
-  var list=box[0].children;
+      list=box[0].children;
       now="right";
       x=0;
       y=0;
-  list[x].children[y].className=now;
+      list[x].children[y].className=now;
   b.onclick=function() {
-    console.log(a.value);
     if(a.value=="GO"){
-      console.log(x,y,now)
-      if(y>=0&&y<10&&x>=0&&x<10){
+     go();
+    }else if(a.value=="TUN LEF"){
+      changeleft();
+    }else if(a.value=="TUN RIG"){
+      changeright();
+    }else if(a.value=="TUN BAC"){
+       changeBAC();
+    }
+  }
+
+
+
+  function go(){
+    if(y>=0&&y<10&&x>=0&&x<10){
         console.log(y,now)
         if(now=="top"){
           console.log(x,y);
@@ -119,8 +128,9 @@
           list[x].children[y].className=now;
         }
       }
-    }else if(a.value=="TUN LEF"){
-      switch (now)
+  }
+  function changeleft(){
+    switch (now)
       {
         case "top":now="left";break;
         case "right":now="top";break;
@@ -129,27 +139,28 @@
       }
       list[x].children[y].className=now;
       console.log(now);
-    }else if(a.value=="TUN RIG"){
+  }
+  function changeright(){
       switch (now)
-      {
-        case "top":now="right";break;
-        case "right":now="bottom";break;
-        case "bottom":now="left";break;
-        case "left":now="top";break;
-      }
-      list[x].children[y].className=now;
-      console.log(now);
-    }else if(a.value=="TUN BAC"){
-      switch (now)
-      {
-        case "top":now="bottom";break;
-        case "right":now="left";break;
-        case "bottom":now="top";break;
-        case "left":now="right";break;
-      }
-      list[x].children[y].className=now;
-      console.log(now);
-    }
+            {
+              case "top":now="right";break;
+              case "right":now="bottom";break;
+              case "bottom":now="left";break;
+              case "left":now="top";break;
+            }
+            list[x].children[y].className=now;
+            console.log(now);
+  }
+   function changeBAC(){
+       switch (now)
+            {
+              case "top":now="bottom";break;
+              case "right":now="left";break;
+              case "bottom":now="top";break;
+              case "left":now="right";break;
+            }
+            list[x].children[y].className=now;
+            console.log(now);
   }
 </script>
 </body>

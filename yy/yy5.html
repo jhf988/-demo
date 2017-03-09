@@ -208,12 +208,12 @@ function rotate(){
   if(rotatevalue>now){                                                //若方块transform值比设定的大
     var rotatedvalue=rotatevalue-1;                                   //transform值-1
     c.style.transform="rotate("+rotatedvalue+"deg)";                  
-     rotatebox=setInterval("rotate()",10);                            //重复-1形成旋转动画
+     rotatebox=setInterval("rotate()",4);                            //重复-1形成旋转动画
   }else if(rotatevalue==now){
   }else if(rotatevalue<now){
     var rotatedvalue=rotatevalue+1;
      c.style.transform="rotate("+rotatedvalue+"deg)";
-    rotatebox=setInterval("rotate()",10);
+    rotatebox=setInterval("rotate()",4);
   }
 }
   function changeleft(){                                             

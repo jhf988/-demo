@@ -1,0 +1,382 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style type="text/css">
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  li{ list-style: none;}
+  .box { margin:20px 0 0 20px;}
+
+  .xul{width: 600px;padding-left: 60px;height: 60px; text-align: center;}
+  .xul li{float: left; width: 60px; height: 60px;line-height: 60px;}
+  .yul{ height: 600px; width: 60px;float: left;text-align: center; }
+  .yul li{height: 60px; line-height: 60px;width: 60px;}
+
+  .boxs{ border:1px solid #333; width: 600px; height: 600px; margin-left: 60px; position: relative;}
+  .boxs>ul li{border:1px solid #ccc;width: 60px; height: 60px;display: inline-block;box-sizing:border-box;}
+/*   .boxs>ul li.top{border-top:5px solid #00f; background: #f00;}
+.boxs>ul li.right{border-right:5px solid #00f; background: #f00;}
+.boxs>ul li.bottom{border-bottom:5px solid #00f; background: #f00;}
+.boxs>ul li.left{border-left:5px solid #00f; background: #f00;} */
+
+  #movebox{width: 60px; height: 60px;background: #f00;position: absolute;top:0;left: 0;box-sizing:border-box;border-right:5px solid #00f;}
+  #movebox.top{border-top:5px solid #00f; background: #f00;}
+  #movebox.right{border-right:5px solid #00f; background: #f00;}
+  #movebox.bottom{border-bottom:5px solid #00f; background: #f00;}
+  #movebox.left{border-left:5px solid #00f; background: #f00;}
+  </style>
+<body>
+ <div class="box">
+   <ul class="xul">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+    
+    <ul class="yul">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+    <div class="boxs">
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+      <div id="movebox"></div>
+    </div>
+ </div>
+ <br/>
+ <input type="text" id="searchvalue"><button id="searchbutton">执行</button>
+ <button onclick="go()">GO</button>
+ <button onclick="changeleft()">TUN LEF</button>
+ <button onclick="changeright()">TUN RIG</button>
+ <button onclick="changeBAC()">TUN BAC</button>
+ <br/>
+  <button onclick="TRALEF()">TRA LEF</button>
+  <button onclick="TRATOP()">TRA TOP</button>
+  <button onclick="TRARIG()">TRA RIG</button>
+  <button onclick="TRABOT()">TRA BOT</button>
+  <br/>
+  <button onclick="MOVLEF()">MOV LEF</button>
+  <button onclick="MOVTOP()">MOV TOP</button>
+  <button onclick="MOVRIG()">MOV RIG</button>
+  <button onclick="MOVBOT()">MOV BOT</button>
+ 
+ <!--
+TRA LEF：向屏幕的左侧移动一格，方向不变
+TRA TOP：向屏幕的上面移动一格，方向不变
+TRA RIG：向屏幕的右侧移动一格，方向不变
+TRA BOT：向屏幕的下面移动一格，方向不变
+MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格
+MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格
+MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格
+MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格 -->
+<script type="text/javascript">     
+  var box=document.getElementsByClassName("boxs");
+      a=document.getElementById("searchvalue");
+      b=document.getElementById("searchbutton");
+      c=document.getElementById("movebox");
+      list=box[0].children;
+      now="0";
+      x=0;
+      y=0;
+      posx=0;
+      posy=0;
+      posl=0;
+      post=0;
+      c.style.left=0;
+      c.style.top=0;
+    var movebox=0;
+    var moveboxx=0;
+    var rotatebox=0;
+    c.style.transform="rotate(0deg)";
+  b.onclick=function() {
+    if(a.value=="GO"){
+     go();
+    }else if(a.value=="TUN LEF"){
+      changeleft();
+    }else if(a.value=="TUN RIG"){
+      changeright();
+    }else if(a.value=="TUN BAC"){
+       changeBAC();
+    }else if(a.value=="TRA LEF"){
+       TRALEF();
+    }else if(a.value=="TRA TOP"){
+       TRATOP();
+    }else if(a.value=="TRA RIG"){
+       TRARIG();
+    }else if(a.value=="TRA BAC"){
+       TRABAC();
+    }else if(a.value=="MOV LEF"){
+       MOVLEF();
+    }else if(a.value=="MOV TOP"){
+       MOVTOP();
+    }else if(a.value=="MOV RIG"){
+       MOVRIG();
+    }else if(a.value=="MOV BAC"){
+       MOVBAC();
+    }
+  }
+  function go(){
+    var nows=parseInt(c.style.transform.replace(/[^0-9]/ig,""));
+    if(y>=0&&y<10&&x>=0&&x<10){//判断位置在格子内
+        if(nows=="270"){       //判断方向是否为左
+          if(x>0){             //判断是否超出边缘
+            x--;
+          }
+          posx=x*60;          //位移的距离
+          animate()           //发生位移
+        }else if(nows=="180"){
+          if(y>0){
+          y--;
+          }
+          posy=y*60;
+          animate()
+        }else if(nows=="0"){
+          if(y<9){
+            y++;
+          }
+          posy=y*60;
+          animate()
+        }else if(nows=="90"){
+          if(x<9){
+            x++;
+          }
+          posx=x*60;
+          animate()
+        }
+      }
+  }
+  function animate(){
+    var posl=parseInt(c.style.left);        //获取方块左边距离
+        post=parseInt(c.style.top);         //获取方块上边距离
+        clearInterval(movebox);             //取消 setInterval() 设置的 timeout
+        clearInterval(moveboxx);
+    if(posl>posy){                          //若方块左边距比移动后的左边距大       
+       c.style.left=(posl-1)+"px";          //方块左边距-1
+       movebox=setInterval("animate()",10); //重复-1形成移动动画
+    }else if(posl==posy){
+    }else if(posl<posy){                    //若方块左边距比移动后的左边距小
+      c.style.left=(posl+1)+"px";           //方块左边距+1
+       movebox=setInterval("animate()",10); //重复+1形成移动动画
+    }
+
+    if(post>posx){
+       c.style.top=(post-1)+"px";           //上下移动动画
+       moveboxx=setInterval("animate()",10);
+    }else if(post==posx){
+    }else if(post<posx){
+      c.style.top=(post+1)+"px";
+       moveboxx=setInterval("animate()",10);
+    }
+  }
+
+
+function rotate(){
+  var rotatevalue=parseInt(c.style.transform.replace(/[^0-9]/ig,"")); //获取方块transform的值xx deg;
+  clearInterval(rotatebox);                                           //取消 setInterval() 设置的 timeout
+  if(rotatevalue>now){                                                //若方块transform值比设定的大
+    var rotatedvalue=rotatevalue-1;                                   //transform值-1
+    c.style.transform="rotate("+rotatedvalue+"deg)";                  
+     rotatebox=setInterval("rotate()",10);                            //重复-1形成旋转动画
+  }else if(rotatevalue==now){
+  }else if(rotatevalue<now){
+    var rotatedvalue=rotatevalue+1;
+     c.style.transform="rotate("+rotatedvalue+"deg)";
+    rotatebox=setInterval("rotate()",10);
+  }
+}
+  function changeleft(){                                             
+      if(now==0){
+        now="360";
+        c.style.transform="rotate(360deg)";
+        switch (now)
+        {
+          case "360":now="270";break;
+          case "90":now="0";break;
+          case "180":now="90";break;
+          case "270":now="180";break;
+        }
+        rotate();
+      }else{
+        switch (now)
+        {
+          case "360":now="270";break;
+          case "90":now="0";break;
+          case "180":now="90";break;
+          case "270":now="180";break;
+        }
+        rotate();
+      }
+  }
+  function changeright(){
+    if(now==360){
+        now="0";
+        c.style.transform="rotate(0deg)";
+        switch (now)
+        {
+          case "0":now="90";break;
+          case "90":now="180";break;
+          case "180":now="270";break;
+          case "270":now="360";break;
+        }
+        rotate();
+      }else{
+        switch (now)
+        {
+           case "0":now="90";break;
+          case "90":now="180";break;
+          case "180":now="270";break;
+          case "270":now="360";break;
+        }
+        rotate();
+      }
+  }
+   function changeBAC(){
+    if(now==360){
+        now="0";
+        c.style.transform="rotate(0deg)";
+        switch (now)
+        {
+          case "0":now="180";break;
+          case "90":now="270";break;
+          case "180":now="360";break;
+          case "270":now="450";break;
+        }
+        rotate();
+      }else if(now==450){
+        now="90";
+        c.style.transform="rotate(90deg)";
+        switch (now)
+        {
+          case "0":now="180";break;
+          case "90":now="270";break;
+          case "180":now="360";break;
+          case "270":now="450";break;
+        }
+        rotate();
+      }else{
+         switch (now)
+        {
+          case "0":now="180";break;
+          case "90":now="270";break;
+          case "180":now="360";break;
+          case "270":now="450";break;
+        }
+        rotate();
+      }
+  }
+
+  function TRALEF(){
+    if(y>=0&&y<10&&x>=0&&x<10){
+      if(y>0){
+            y--;
+        }
+        posy=y*60;
+        animate()
+     }
+  }
+  function TRATOP(){
+    if(y>=0&&y<10&&x>=0&&x<10){
+      if(x>0){
+            x--;
+          }
+          posx=x*60;
+        animate()
+     }
+  }
+  function TRARIG(){
+    if(y>=0&&y<10&&x>=0&&x<10){
+      if(y<9){
+            y++;
+          }
+        posy=y*60;
+        animate()
+     }
+  }
+  function TRABOT(){
+    if(y>=0&&y<10&&x>=0&&x<10){
+       if(x<9){
+            x++;
+          }
+           posx=x*60;
+        animate()
+     }
+  }
+  function MOVLEF(){
+    if(y>=0&&y<10&&x>=0&&x<10){
+        if(y>0){
+            y--;
+        }
+        posy=y*60;
+        animate()
+        now="180";
+        rotate();
+     }
+  }
+  function MOVTOP(){
+    if(y>=0&&y<10&&x>=0&&x<10){
+        if(x>0){
+            x--;
+          }
+           posx=x*60;
+        animate()
+        now="270";
+        rotate();
+     }
+  }
+  function MOVRIG(){
+    if(y>=0&&y<10&&x>=0&&x<10){
+       if(y<9){
+            y++;
+          }
+        posy=y*60;
+        animate()
+        now="0";
+        rotate();
+     }
+  }
+  function MOVBOT(){
+    if(y>=0&&y<10&&x>=0&&x<10){
+      if(x<9){
+            x++;
+          }
+           posx=x*60;
+        animate()
+        now="90";
+        rotate();
+     }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style type="text/css">
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  li{ list-style: none;}
+  
+  .main table tr td{border:1px solid #ccc; width: 200px; height: 100px; text-align: center;line-height: 100px;position: relative;}
+  .main table tr td span{display: block; line-height: 1;  font-size: 12px;right:30%; height: 20px; cursor: pointer;}
+  .main table tr td span:first-child{position: absolute;top:30%;}
+  .main table tr td span:last-child{position: absolute;bottom:30%;}
+  
+  .main table tr:first-child{ background: #666; color: #fff;}
+  </style>
+<body>
+  <div class="main">
+    <table id="content" cellpadding="0" cellspacing="0" style="border-collapse:collapse">
+      <tr>
+        <td>姓名</td>
+        <td >语文  <span onclick="Descsort('yw')">▲</span><span onclick="ASCsort('yw')">▼</span></td>
+        <td>数学<span onclick="Descsort('sx')">▲</span><span onclick="ASCsort('sx')">▼</span></td>
+        <td>英语<span onclick="Descsort('yy')">▲</span><span onclick="ASCsort('yy')">▼</span></td>
+        <td>总分<span onclick="Descsort('sum')">▲</span><span onclick="ASCsort('sum')">▼</span></td>
+      </tr>
+    </table>
+  </div>
+<script type="text/javascript">     
+  var a=document.getElementById("content");
+      arr=[{
+            "name":"小明",
+            "yw":80,
+            "sx":90,
+            "yy":70
+          },
+          {
+            "name":"小红",
+            "yw":90,
+            "sx":60,
+            "yy":90
+          },
+          {
+            "name":"小亮",
+            "yw":60,
+            "sx":100,
+            "yy":70
+          }]
+
+      for(var i in arr){
+         var newNode = document.createElement("tr");
+         a.children[0].appendChild(newNode);
+      }
+      addhtml();
+
+
+
+
+      function addhtml(){
+        for(var i=0;i<arr.length;i++){
+          var sum=arr[i].yw+arr[i].sx+arr[i].yy;
+          var text="<td>"+arr[i].name+"</td><td>"+arr[i].yw+"</td><td>"+arr[i].sx+"</td><td>"+arr[i].yy+"</td><td>"+sum+"</td>";
+          arr[i].sum=sum;
+          a.children[0].children[i+1].innerHTML=text;
+        }
+      }
+      
+      function Descsort (s) {
+         for(var i=0;i<arr.length;i++){
+          for(var j=i+1;j<arr.length;j++){
+            if (arr[i][s]<arr[j][s]){
+              var x=arr[i];
+              arr[i]=arr[j];
+              arr[j]=x;
+            }
+          }
+         }
+         addhtml();
+      }
+      function ASCsort(s){
+        for(var i=0;i<arr.length;i++){
+          for(var j=i+1;j<arr.length;j++){
+            if (arr[i][s]>arr[j][s]){
+              var x=arr[i];
+              arr[i]=arr[j];
+              arr[j]=x;
+            }
+          }
+         }
+         addhtml();
+      }
+</script>
+</body>
+</html>

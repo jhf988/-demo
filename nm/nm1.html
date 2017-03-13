@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style>
+   html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  li{ list-style: none;}
+  img{width: 100%;}
+    .text{ position: absolute;left: 20%;top:150px; text-align: center; width: 800px;height: 300px;
+
+ }
+ .content{position: relative; height: 100%;}
+ .content::before{
+  content: '';
+  position:absolute;
+  left: 0;
+  height: 100%;top:0;
+  width: 100%;
+  border:3px solid #fff;
+  border-width: 0 3px;
+   box-sizing:border-box;
+  transition:all 0.8s;
+  animation: textborder 2s      ;
+-moz-animation: textborder 2s    ; /* Firefox */
+-webkit-animation: textborder 2s     ;  /* Safari 和 Chrome */
+-o-animation: textborder 2s    ; /* Opera */
+ }
+  .content::after{
+  content: '';
+  position:absolute;
+  left: 0;
+  height: 100%;
+  top:0;
+  width: 100%;
+  border:3px solid #fff;
+  border-width: 3px 0;
+  box-sizing:border-box;
+  transition:all 0.8s;
+  animation: textborders 2s   ;
+-moz-animation: textborders 2s    ; /* Firefox */
+-webkit-animation: textborders 2s     ;  /* Safari 和 Chrome */
+-o-animation: textborders 2s    ; /* Opera */
+ }
+
+.content p{line-height: 200px;font-size: 20px;
+background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+color:transparent;
+-webkit-text-fill-color:transparent;
+-webkit-background-clip:text;
+-webkit-background-size:200% 100%;
+background-size:200% 100%;
+animation: text 2s   ;
+-moz-animation: text 2s   ; /* Firefox */
+-webkit-animation: text 2s   ;  /* Safari 和 Chrome */
+-o-animation: text 2s   ; /* Opera */
+}
+.content span{font-size: 20px;
+background-image: -webkit-linear-gradient(left, #EFCEE8, #f12345 10%, #f23456 20%, #f45678 30%, #f67890 40%, #E08031 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+color:transparent;
+-webkit-text-fill-color:transparent;
+-webkit-background-clip:text;
+-webkit-background-size:200% 100%;
+background-size:200% 100%;
+animation: text 2s   ;
+-moz-animation: text 2s   ; /* Firefox */
+-webkit-animation: text 2s   ;  /* Safari 和 Chrome */
+-o-animation: text 2s   ; /* Opera */
+}
+
+.blur
+{
+animation: myfirst 2s   ;
+-moz-animation: myfirst 2s   ; /* Firefox */
+-webkit-animation: myfirst 2s   ;  /* Safari 和 Chrome */
+-o-animation: myfirst 2s   ; /* Opera */
+ -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px); 
+}
+
+
+
+ /*textborder*/
+@keyframes textborder
+{
+from {height: 0;top:50%;}
+to {height: 100%;top:0;}
+}
+@-moz-keyframes textborder /* Firefox */
+{
+from {height: 0;top:50%;}
+to {height: 100%;top:0;}
+}
+
+@-webkit-keyframes textborder /* Safari 和 Chrome */
+{
+from {height: 0;top:50%;}
+to {height: 100%;top:0;}
+}
+
+@-o-keyframes textborder /* Opera */
+{
+from {height: 0;top:50%;}
+to {height: 100%;top:0;}
+}
+
+ /*text*/
+@keyframes text
+{
+from {background-position: 0 0;}
+to {background-position: -100% 0;}
+}
+@-moz-keyframes text /* Firefox */
+{
+from {background-position: 0 0;}
+to {background-position: -100% 0;}
+}
+
+@-webkit-keyframes text /* Safari 和 Chrome */
+{
+from {background-position: 0 0;}
+to {background-position: -100% 0;}
+}
+
+@-o-keyframes text /* Opera */
+{
+from {background-position: 0 0;}
+to {background-position: -100% 0;}
+}
+
+ /*textborders*/
+@keyframes textborders
+{
+from {width: 0;left:50%;}
+to {width: 100%;left:0;}
+}
+@-moz-keyframes textborders /* Firefox */
+{
+from {width: 0;left:50%;}
+to {width: 100%;left:0;}
+}
+
+@-webkit-keyframes textborders /* Safari 和 Chrome */
+{
+from {width: 0;left:50%;}
+to {width: 100%;left:0;}
+}
+
+@-o-keyframes textborders /* Opera */
+{
+from {width: 0;left:50%;}
+to {width: 100%;left:0;}
+}
+
+ /*myfirst*/
+@keyframes myfirst
+{
+from {
+   -webkit-filter: blur(0); /* Chrome, Opera */
+       -moz-filter: blur(0);
+        -ms-filter: blur(0);    
+            filter: blur(0);  
+}
+to {
+   -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);  
+}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+from {
+   -webkit-filter: blur(0); /* Chrome, Opera */
+       -moz-filter: blur(0);
+        -ms-filter: blur(0);    
+            filter: blur(0);  
+}
+to {
+   -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);  
+}
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+from {
+   -webkit-filter: blur(0); /* Chrome, Opera */
+       -moz-filter: blur(0);
+        -ms-filter: blur(0);    
+            filter: blur(0);  
+}
+to {
+   -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);  
+}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+from {
+   -webkit-filter: blur(0); /* Chrome, Opera */
+       -moz-filter: blur(0);
+        -ms-filter: blur(0);    
+            filter: blur(0);  
+}
+to {
+   -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);  
+}
+}
+
+
+
+
+  </style>
+<body>
+<img src="1.jpg" alt="" class="blur">
+<div class="text">
+  <div class="content">
+    <p>欢迎参加百度前端技术学院</p>
+    <span>点击报名</span>
+  </div>
+</div>
+</body>
+</html>

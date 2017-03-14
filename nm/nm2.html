@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style>
+   html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  li{ list-style: none;}
+ .text{ position: absolute;left: 50%;top:50%;margin-left: -50px; margin-top: -50px; text-align: center;  border-radius: 50px; border:50px solid #D9B3E6;border-right-color:#8192D6;border-bottom-color:#8192D6;
+}
+ .text:before{
+  content: '';
+   position: absolute;left: 50%;top:50%;margin-left: -50px; margin-top: -50px; text-align: center;-webkit-border-radius: 50px; border:50px solid #8192D6;border-left-color:transparent;border-top-color:transparent;z-index: 3;
+    animation: textborder 0.8s linear infinite;
+-moz-animation: textborder 0.8s linear infinite; /* Firefox */
+-webkit-animation: textborder 0.8s linear  infinite;  /* Safari 和 Chrome */
+-o-animation: textborder 0.8s linear infinite; /* Opera */
+ }
+ .text:after{
+  content: '';
+   position: absolute;left: 50%;top:50%;margin-left: -50px; margin-top: -50px; text-align: center;-webkit-border-radius: 50px; border:50px solid #D9B3E6;border-left-color:transparent;border-top-color:transparent;z-index: 2;
+    animation: border 0.8s linear infinite;
+-moz-animation: border 0.8s linear infinite; /* Firefox */
+-webkit-animation: border 0.8s linear  infinite;  /* Safari 和 Chrome */
+-o-animation: border 0.8s linear infinite; /* Opera */
+ }
+ .content{
+    content: '';
+   position: absolute;left: 50%;top:50%;margin-left: -75px; margin-top: -75px; text-align: center;-webkit-border-radius: 75px; border:3px solid #81C2D6;border-left-color:transparent; width: 150px; height: 150px;
+    animation: ring 1s linear infinite;
+-moz-animation: ring 1s linear infinite; /* Firefox */
+-webkit-animation: ring 1s linear  infinite;  /* Safari 和 Chrome */
+-o-animation: ring 1s linear infinite; /* Opera */
+ }
+ /*textborder*/
+@keyframes textborder
+{
+0% {
+    transform: rotate(0deg);
+}
+25% {
+    transform: rotate(180deg);
+}
+50% {
+    transform: rotate(180deg);
+    z-index: 3;
+}
+75% {
+    transform: rotate(360deg);
+    z-index: 3;
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+ /*border*/
+@keyframes border
+{
+0% {
+    transform: rotate(0deg);
+    z-index: 3;
+}
+25% {
+    transform: rotate(0deg);
+    z-index: 3;
+}
+25.001% {
+    transform: rotate(0deg);
+    z-index: 2;
+}
+50% {
+    transform: rotate(180deg);
+    z-index: 2;
+}
+75% {
+    transform: rotate(180deg);
+    z-index: 2;
+}
+75.001% {
+    transform: rotate(180deg);
+    z-index: 3;
+}
+100% {
+    transform: rotate(360deg);
+    z-index: 3;
+}
+}
+ @keyframes ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+  </style>
+<body>
+<div class="text">
+  <div class="content"></div>
+</div>
+</body>
+</html>

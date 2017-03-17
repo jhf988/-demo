@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style>
+   html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  li{ list-style: none;}
+  body{overflow: hidden; -webkit-perspective: 800px;
+     -moz-perspective: 800px;
+            perspective: 800px;}
+  .text{transform-style: preserve-3d;  width: 500px; height: 100px; transition:opacity 1s, transform 1s;position: absolute;top: 30%;left: 30%;}
+  .text img{ width: 300px;height: 200px; transition:opacity 1s, transform 1s;position: absolute;top: 60%;left: 10%;}
+  .text img:nth-child(1){transform:rotateY(0deg) translateZ(263px);;}
+  .text img:nth-child(2){transform:rotateY(60deg) translateZ(263px);}
+  .text img:nth-child(3){transform:rotateY(120deg) translateZ(263px);}
+  .text img:nth-child(4){transform:rotateY(180deg) translateZ(263px);}
+  .text img:nth-child(5){transform:rotateY(240deg) translateZ(263px);}
+  .text img:nth-child(6){transform:rotateY(300deg) translateZ(263px);}
+  </style>
+<body>
+<div class="text" id="text">
+ 
+    <img src="1.jpg" alt="">
+    <img src="2.jpg" alt="">
+    <img src="3.jpg" alt="">
+    <img src="4.jpg" alt="">
+    <img src="5.jpg" alt="">
+    <img src="5.jpg" alt="">
+  </ul>
+</div>
+<script>
+  var a=document.getElementById("list");
+      c=document.getElementById("text");
+      index=0;
+c.onclick=function() {
+  c.style.transform="rotateY("+-1*60*++index+"deg) "
+}
+</script>
+</body>
+</html>

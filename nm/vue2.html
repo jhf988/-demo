@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style>
+   html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  </style>
+<body>
+<script>
+var Observer=function(a) {
+  this.data=a;
+  this.work(a);
+  this.eventsBus=new event();
+}
+let p=Observer.prototype;
+
+
+function event(){
+  this.events={};
+}
+event.prototype.on=function(attr,callback){
+  if(this.events[attr]){
+    this.events[attr].push(callback);
+  }else{
+    this.events[attr]=[callback];
+  }
+}
+event.prototype.off=function(attr){
+  for(let key in this.events){
+    if(this.events.hasOwnProperty(key)&&key===attr){
+      delete this.events[key];
+    }
+  }
+}
+event.prototype.emit=function(attr,...arg){
+  this.events[attr]&&this.events[attr].forEach(function(item){
+    item(...arg);
+  })
+}
+
+
+p.work=function(obj){
+  let val;
+  for(let k in obj){
+    if(obj.hasOwnProperty(k)){
+      val=obj[k];
+      if(typeof val ==='object'){
+        new Observer(val);
+      }
+      this.convert(k,val);
+    }
+  }
+}
+
+
+p.convert=function(k,v){
+  let _this=this;
+  Object.defineProperty(this.data,k,{
+    enumerable:true,
+    configurable:true,
+    get:function(){
+      console.log('你访问了'+k);
+      return v;
+    },
+    set:function(newv){
+      console.log('你设置了'+k);
+      console.log('新的'+k+'='+newv);
+      v=newv;
+      _this.eventsBus.emit(k,v,newv);
+      if(typeof newv ==='object'){
+        new Observer(v);
+      }
+    }
+  })
+}
+Observer.prototype.$watch=function(attr,callback){
+  this.eventsBus.on(attr,callback)
+}
+let app1 = new Observer({
+  name: 'youngwind',
+  age: 25
+});
+
+let app2 = new Observer({
+  university: 'bupt',
+  major: 'computer'
+});
+ app1.$watch('age', function(age) {
+         console.log(`我的年纪变了，现在已经是：${age}岁了`)
+ });
+</script>
+
+</body>
+</html>

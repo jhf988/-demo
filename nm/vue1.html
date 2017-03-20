@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Task</title>
+  </head>
+  <style>
+   html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  </style>
+<body>
+
+<script src="vue.js"></script>
+<script>
+var Observer=function(a) {
+  this.data=a;
+  this.work(a)
+}
+let p=Observer.prototype;
+
+p.work=function(obj){
+  let val;
+  for(let k in obj){
+    if(obj.hasOwnProperty(k)){
+      val=obj[k];
+      if(typeof val ==='object'){
+        new Observer(val);
+      }
+      this.convert(k,val);
+    }
+  }
+}
+
+
+p.convert=function(k,v){
+  Object.defineProperty(this.data,k,{
+    enumerable:true,
+    configurable:true,
+    get:function(){
+      console.log('你访问了'+k);
+      return v
+    },
+    set:function(newv){
+      console.log('你设置了'+k);
+      console.log('新的'+k+'='+newv);
+      if(newv===v)return;
+      v=newv;
+    }
+  })
+}
+
+let app1 = new Observer({
+  name: 'youngwind',
+  age: 25
+});
+
+let app2 = new Observer({
+  university: 'bupt',
+  major: 'computer'
+});
+
+
+</script>
+
+</body>
+</html>
